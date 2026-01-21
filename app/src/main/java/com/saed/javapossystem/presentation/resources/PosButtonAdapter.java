@@ -1,8 +1,9 @@
-package com.saed.javapossystem.resources;
+package com.saed.javapossystem.presentation.resources;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,7 +32,11 @@ public class PosButtonAdapter extends RecyclerView.Adapter<PosButtonAdapter.Butt
         ButtonModel model = buttons.get(position);
         holder.button.setText(model.getText());
         holder.button.setOnClickListener(v -> {
-            model.getOnPress().onButtonClick();
+            try {
+                model.getOnPress().onButtonClick();
+            } catch (Exception e) {
+                Toast.makeText(v.getContext(), "Error :" + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
         });
     }
 

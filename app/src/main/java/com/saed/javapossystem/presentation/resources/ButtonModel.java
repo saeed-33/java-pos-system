@@ -1,4 +1,4 @@
-package com.saed.javapossystem.resources;
+package com.saed.javapossystem.presentation.resources;
 
 public class ButtonModel {
     public interface OnButtonClickListener {

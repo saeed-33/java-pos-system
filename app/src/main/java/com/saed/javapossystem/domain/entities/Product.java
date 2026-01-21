@@ -1,41 +1,72 @@
 package com.saed.javapossystem.domain.entities;
 
+import java.util.Objects;
 
 public class Product {
     final private int id;
-    final private String name;
-    final private int quantity;
-    final private double price;
-    final private String code;
+    private String name;
+    private int quantity;
+    private double price;
+    private String code;
 
-    public Product(int id, String name, int quantity, double price, String code) {
+    public Product(int id, String barcode, String name, int qty, double price) {
         this.id = id;
+        this.code = barcode;
         this.name = name;
-        this.quantity = quantity;
+        this.quantity = qty;
         this.price = price;
-        this.code = code;
+
     }
-    public Product(String name, int quantity, double price, String code){
-        this.id = -1;
-        this.name = name;
-        this.quantity = quantity;
-        this.price = price;
-        this.code = code;
+
+
+    public double getPrice() {
+        return price;
+    }
+
+    public int getQty() {
+        return quantity;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getBarcode() {
+        return code;
     }
 
     public int getId() {
         return id;
     }
-    public String getName() {
-        return name;
+
+
+    public double getTotalPrice() {
+        return quantity * price;
     }
-    public int getQuantity() {
-        return quantity;
+
+    public void setQty(int i) {
+        quantity = i;
     }
-    public double getPrice() {
-        return price;
+
+    @Override
+    public boolean equals(Object o) {
+        // 1. Check if it's the exact same memory reference
+        if (this == o) return true;
+
+        // 2. Check if the other object is null or a different class
+        if (o == null || getClass() != o.getClass()) return false;
+
+        // 3. Cast the object to Product
+        Product product = (Product) o;
+
+        // 4. Compare the unique identifier (barcode)
+        boolean barcodeCond = Objects.equals(code, product.getBarcode());
+        boolean idCond = Objects.equals(id, product.getId());
+        boolean nameCond = Objects.equals(name, product.getName());
+        return barcodeCond && idCond && nameCond;
     }
-    public String getCode() {
-        return code;
+
+    public Product copyWith(int quantity) {
+        return new Product(id, code, name, quantity, price);
     }
 }
