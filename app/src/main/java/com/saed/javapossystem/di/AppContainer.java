@@ -15,6 +15,7 @@ import com.saed.javapossystem.domain.usecase.AddProductToCartUseCase;
 import com.saed.javapossystem.domain.usecase.ChangeQtyOfProductUseCase;
 import com.saed.javapossystem.domain.usecase.ClearCartUseCase;
 import com.saed.javapossystem.domain.usecase.GetAllCartItemsUseCase;
+import com.saed.javapossystem.domain.usecase.GetAllProductsUseCase;
 import com.saed.javapossystem.domain.usecase.GetCartTotalPriceUseCase;
 import com.saed.javapossystem.domain.usecase.GetCartTotalQtyUseCase;
 import com.saed.javapossystem.domain.usecase.PayBillUseCase;
@@ -49,6 +50,7 @@ public class AppContainer {
     public final GetCartTotalQtyUseCase getCartTotalQtyUseCase;
     public final ChangeQtyOfProductUseCase changeQtyOfProductUseCase;
     public final PayBillUseCase payBillUseCase;
+    public final GetAllProductsUseCase getAllProductsUseCase;
 
 
     public AppContainer(Context context) {
@@ -72,7 +74,8 @@ public class AppContainer {
         getCartTotalQtyUseCase = new GetCartTotalQtyUseCase(cartRepository);
         getCartTotalPriceUseCase = new GetCartTotalPriceUseCase(cartRepository);
         changeQtyOfProductUseCase = new ChangeQtyOfProductUseCase(cartRepository);
-        payBillUseCase = new PayBillUseCase(cartRepository,productRepository, billRepository, billRowRepository);
+        payBillUseCase = new PayBillUseCase(cartRepository, productRepository, billRepository, billRowRepository);
+        getAllProductsUseCase = new GetAllProductsUseCase(productRepository);
     }
 
 

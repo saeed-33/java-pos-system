@@ -43,6 +43,6 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public List<Product> getAllProducts() {
-        return Collections.emptyList();
+        return productDaoSQLite.getAllProducts();
     }
 }
