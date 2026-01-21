@@ -30,8 +30,15 @@ public class PosRepositoryImpl implements PosRepository {
 
     @Override
     public void removeProduct(Product product) {
+        System.out.println(product);
         if (cartList.contains(product)) {
-            cartList.remove(product);
+            int index = cartList.indexOf(product);
+            Product existingProduct = cartList.get(index);
+            if (existingProduct.isRefunded()) {
+                cartList.set(index, existingProduct.copyWith(existingProduct.getSelldQuantity() - 1));
+            } else {
+                cartList.remove(product);
+            }
         } else {
             cartList.add(product.copyWith(-1));
 

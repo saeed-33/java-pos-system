@@ -1,5 +1,7 @@
 package com.saed.javapossystem.domain.entities;
 
+import androidx.annotation.NonNull;
+
 import java.util.Objects;
 
 public class Product {
@@ -88,4 +90,13 @@ public class Product {
     }
 
 
+    public boolean isRefunded() {
+        return selldQuantity <= 0;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return String.format("id %d,name %s,barcode %s,qty %d,price %s,selldQuantity %d,totalPrice %s\n", id, name, code, quantity, price, selldQuantity, getTotalPrice());
+    }
 }
