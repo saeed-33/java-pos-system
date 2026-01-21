@@ -1,6 +1,5 @@
-package com.saed.javapossystem.screens;
+package com.saed.javapossystem.presentation.screens;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.ImageView;
 
@@ -8,7 +7,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.saed.javapossystem.R;
-import com.saed.javapossystem.widgets.NavButtonWidget;
+import com.saed.javapossystem.presentation.widgets.NavButtonWidget;
 
 public class MainActivity extends AppCompatActivity {
     ImageView logo;

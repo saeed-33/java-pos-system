@@ -7,7 +7,7 @@
     android:layout_marginVertical="80dp"
     android:gravity="center"
 
-    tools:context=".screens.MainActivity">
+    tools:context=".presentation.screens.MainActivity">
 
     <ImageView
         android:id="@+id/logo"
@@ -20,7 +20,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.saed.javapossystem.widgets.NavButtonWidget
+    <com.saed.javapossystem.presentation.widgets.NavButtonWidget
         android:id="@+id/pos_nav_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@id/logo"
         app:titleText="POS" />
 
-    <com.saed.javapossystem.widgets.NavButtonWidget
+    <com.saed.javapossystem.presentation.widgets.NavButtonWidget
         android:id="@+id/product_nav_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
         app:layout_constraintTop_toBottomOf="@id/pos_nav_button"
         app:titleText="@string/product_screen" />
 
-    <com.saed.javapossystem.widgets.NavButtonWidget
+    <com.saed.javapossystem.presentation.widgets.NavButtonWidget
         android:id="@+id/report_nav_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

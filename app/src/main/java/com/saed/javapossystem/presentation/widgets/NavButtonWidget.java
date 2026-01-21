@@ -1,4 +1,4 @@
-package com.saed.javapossystem.widgets;
+package com.saed.javapossystem.presentation.widgets;
 
 import android.content.Context;
 import android.content.Intent;
