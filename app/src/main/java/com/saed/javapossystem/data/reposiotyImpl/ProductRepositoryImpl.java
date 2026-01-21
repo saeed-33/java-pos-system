@@ -1,48 +1,45 @@
-package com.saed.javapossystem.data.repository;
+package com.saed.javapossystem.data.reposiotyImpl;
 
-import android.content.Context;
-
+import com.saed.javapossystem.data.datasource.local.ProductLocalDataSource;
 import com.saed.javapossystem.domain.entities.Product;
 import com.saed.javapossystem.domain.repository.ProductRepository;
-import com.saed.javapossystem.framework.db.ProductDaoSQLite;
 
 import java.util.Collections;
 import java.util.List;
 
 public class ProductRepositoryImpl implements ProductRepository {
-    final private ProductDaoSQLite productDaoSQLite;
-
-    public ProductRepositoryImpl(Context context, ProductDaoSQLite productDaoSQLite) {
-        this.productDaoSQLite = productDaoSQLite;
+    final ProductLocalDataSource local;
+    public ProductRepositoryImpl(ProductLocalDataSource local) {
+        this.local = local;
     }
 
     @Override
     public void createProduct(Product product) {
-
+        local.createProduct(product);
     }
 
     @Override
     public Product getProduct(int id) {
-        return null;
+        return local.getProduct(id);
     }
 
     @Override
     public Product getProduct(String code) {
-        return productDaoSQLite.getProduct(code);
+        return local.getProduct(code);
     }
 
     @Override
     public void updateProduct(Product product) {
-        productDaoSQLite.updateProduct(product);
+        local.updateProduct(product);
     }
 
     @Override
     public void deleteProduct(int id) {
-
+        local.deleteProduct(id);
     }
 
     @Override
     public List<Product> getAllProducts() {
-        return Collections.emptyList();
+        return local.getAllProducts();
     }
 }

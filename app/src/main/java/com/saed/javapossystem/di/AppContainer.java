@@ -2,11 +2,13 @@ package com.saed.javapossystem.di;
 
 import android.content.Context;
 
-import com.saed.javapossystem.data.repository.BillRepositoryImpl;
-import com.saed.javapossystem.data.repository.BillRowRepositoryImpl;
-import com.saed.javapossystem.data.repository.PosRepositoryImpl;
-import com.saed.javapossystem.data.repository.ProductRepositoryImpl;
-import com.saed.javapossystem.domain.entities.Product;
+import com.saed.javapossystem.data.datasource.local.BillLocalDataSource;
+import com.saed.javapossystem.data.datasource.local.BillRowDataSource;
+import com.saed.javapossystem.data.datasource.local.ProductLocalDataSource;
+import com.saed.javapossystem.data.reposiotyImpl.BillRepositoryImpl;
+import com.saed.javapossystem.data.reposiotyImpl.BillRowRepositoryImpl;
+import com.saed.javapossystem.data.reposiotyImpl.PosRepositoryImpl;
+import com.saed.javapossystem.data.reposiotyImpl.ProductRepositoryImpl;
 import com.saed.javapossystem.domain.repository.BillRepository;
 import com.saed.javapossystem.domain.repository.BillRowRepository;
 import com.saed.javapossystem.domain.repository.PosRepository;
@@ -23,9 +25,6 @@ import com.saed.javapossystem.framework.db.BillDaoSQLite;
 import com.saed.javapossystem.framework.db.BillRowDaoSQLite;
 import com.saed.javapossystem.framework.db.DBHelper;
 import com.saed.javapossystem.framework.db.ProductDaoSQLite;
-
-import java.util.Collections;
-import java.util.List;
 
 public class AppContainer {
     //data
@@ -50,6 +49,10 @@ public class AppContainer {
     public final ChangeQtyOfProductUseCase changeQtyOfProductUseCase;
     public final PayBillUseCase payBillUseCase;
 
+    public final BillRowDataSource billRowDataSource;
+    public final ProductLocalDataSource productDataSource;
+    public final BillLocalDataSource billDataSource;
+
 
     public AppContainer(Context context) {
         //data
@@ -58,11 +61,15 @@ public class AppContainer {
         billDaoSQLite = new BillDaoSQLite(dbHelper.getWritableDatabase());
         productDaoSQLite = new ProductDaoSQLite(dbHelper.getWritableDatabase());
 
+        //local data source
+        billRowDataSource = new BillRowDataSource(billRowDaoSQLite);
+        productDataSource = new ProductLocalDataSource(productDaoSQLite);
+        billDataSource = new BillLocalDataSource(billDaoSQLite);
         //repository
         cartRepository = new PosRepositoryImpl();
-        billRepository = new BillRepositoryImpl(context, billDaoSQLite);
-        billRowRepository = new BillRowRepositoryImpl(context, billRowDaoSQLite);
-        productRepository = new ProductRepositoryImpl(context, productDaoSQLite);
+        billRepository = new BillRepositoryImpl(billDataSource);
+        billRowRepository = new BillRowRepositoryImpl(billRowDataSource);
+        productRepository = new ProductRepositoryImpl(productDataSource);
 
         //usecases
         addProductToCartUseCase = new AddProductToCartUseCase(cartRepository, productRepository);
