@@ -1,14 +1,7 @@
-package com.saed.javapossystem.data.repository;
+package com.saed.javapossystem.data.reposiotyImpl;
 
-import android.content.Context;
-
-import com.saed.javapossystem.domain.entities.Bill;
-import com.saed.javapossystem.domain.entities.BillRow;
 import com.saed.javapossystem.domain.entities.Product;
 import com.saed.javapossystem.domain.repository.PosRepository;
-import com.saed.javapossystem.framework.db.BillDaoSQLite;
-import com.saed.javapossystem.framework.db.BillRowDaoSQLite;
-import com.saed.javapossystem.framework.db.ProductDaoSQLite;
 
 import java.util.ArrayList;
 import java.util.List;
