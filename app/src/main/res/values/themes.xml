@@ -3,7 +3,10 @@
     <style name="Base.Theme.JavaPosSystem" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="navButtonWidgetStyle">@style/Widget.NavButtonWidget</item>
+
     </style>
 
     <style name="Theme.JavaPosSystem" parent="Base.Theme.JavaPosSystem" />
+
 </resources>

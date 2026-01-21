@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Style reference for NavButtonWidget -->
+    <attr name="navButtonWidgetStyle" format="reference"/>
+
+    <declare-styleable name="NavButtonWidget">
+        <attr name="iconRes" format="reference"/>
+        <attr name="titleText" format="string"/>
+    </declare-styleable>
+
+
+    <!-- Style reference for PosButtonWidget -->
+    <attr name="posButtonWidgetStyle" format="reference"/>
+    <declare-styleable name="PosButtonWidget">
+        <attr name="text" format="string"/>
+    </declare-styleable>
+
+</resources>
