@@ -12,7 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JavaPosSystem">
         <activity
-            android:name=".MainActivity"
+            android:name=".screens.PosActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.JavaPosSystem">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".screens.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

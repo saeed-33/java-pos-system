@@ -2,18 +2,57 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_marginVertical="80dp"
+    android:gravity="center"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+    tools:context=".screens.MainActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="240dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="64dp"
+        android:contentDescription="@string/logo"
+        app:layout_constraintBottom_toTopOf="@id/pos_nav_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.saed.javapossystem.widgets.NavButtonWidget
+        android:id="@+id/pos_nav_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:iconRes="@drawable/ic_cart"
+        app:layout_constraintBottom_toTopOf="@id/product_nav_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo"
+        app:titleText="POS" />
+
+    <com.saed.javapossystem.widgets.NavButtonWidget
+        android:id="@+id/product_nav_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:iconRes="@drawable/ic_product"
+        app:layout_constraintBottom_toTopOf="@id/report_nav_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/pos_nav_button"
+        app:titleText="@string/product_screen" />
+
+    <com.saed.javapossystem.widgets.NavButtonWidget
+        android:id="@+id/report_nav_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        app:iconRes="@drawable/ic_report"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/product_nav_button"
+        app:titleText="@string/report_screen" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
