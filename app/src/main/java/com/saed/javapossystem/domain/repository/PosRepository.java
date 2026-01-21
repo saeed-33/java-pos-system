@@ -18,4 +18,5 @@ public interface PosRepository {
     int getTotalQty();
 
     boolean changeQtyOfProduct(int id, int newQty);
+
 }

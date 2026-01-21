@@ -7,9 +7,16 @@ import java.util.Date;
 import java.util.Locale;
 
 public class Bill {
+
     private int id;
     private Date date;
     private double totalPrice;
+
+    public Bill(double totalPrice){
+        this.totalPrice = totalPrice;
+        this.date=null;
+
+    }
 
     public Bill(int id, String date, double totalPrice) {
         this.id = id;

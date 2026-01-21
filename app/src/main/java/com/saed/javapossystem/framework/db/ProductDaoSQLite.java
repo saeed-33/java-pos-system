@@ -16,9 +16,9 @@ public class ProductDaoSQLite {
     public void createProduct(Product product) {
         ContentValues values = new ContentValues();
         values.put(ProductContract.COL_NAME, product.getName());
-        values.put(ProductContract.COL_QUANTITY, product.getQuantity());
+        values.put(ProductContract.COL_QUANTITY, product.getQty());
         values.put(ProductContract.COL_PRICE, product.getPrice());
-        values.put(ProductContract.COL_CODE,product.getCode());
+        values.put(ProductContract.COL_CODE,product.getBarcode());
         db.insert(ProductContract.TABLE_NAME, null, values );
 
     }
@@ -31,10 +31,10 @@ public class ProductDaoSQLite {
         if(cursor.moveToFirst()){
             Product product = new Product(
                     cursor.getInt(cursor.getColumnIndexOrThrow(ProductContract.COL_ID)),
+                    cursor.getString(cursor.getColumnIndexOrThrow(ProductContract.COL_CODE)),
                     cursor.getString(cursor.getColumnIndexOrThrow(ProductContract.COL_NAME)),
                     cursor.getInt(cursor.getColumnIndexOrThrow(ProductContract.COL_QUANTITY)),
-                    cursor.getDouble(cursor.getColumnIndexOrThrow(ProductContract.COL_PRICE)),
-                    cursor.getString(cursor.getColumnIndexOrThrow(ProductContract.COL_CODE))
+                    cursor.getDouble(cursor.getColumnIndexOrThrow(ProductContract.COL_PRICE))
             );
             cursor.close();
             return product;
@@ -50,10 +50,11 @@ public class ProductDaoSQLite {
         if(cursor.moveToFirst()){
             Product product = new Product(
                     cursor.getInt(cursor.getColumnIndexOrThrow(ProductContract.COL_ID)),
+                    cursor.getString(cursor.getColumnIndexOrThrow(ProductContract.COL_CODE)),
                     cursor.getString(cursor.getColumnIndexOrThrow(ProductContract.COL_NAME)),
                     cursor.getInt(cursor.getColumnIndexOrThrow(ProductContract.COL_QUANTITY)),
                     cursor.getDouble(cursor.getColumnIndexOrThrow(ProductContract.COL_PRICE)),
-                    cursor.getString(cursor.getColumnIndexOrThrow(ProductContract.COL_CODE))
+                    1
             );
             cursor.close();
             return product;
@@ -64,10 +65,10 @@ public class ProductDaoSQLite {
 
     public void updateProduct(Product product) {
         ContentValues values = new ContentValues();
+        values.put(ProductContract.COL_CODE,product.getBarcode());
         values.put(ProductContract.COL_NAME, product.getName());
-        values.put(ProductContract.COL_QUANTITY, product.getQuantity());
+        values.put(ProductContract.COL_QUANTITY, product.getQty());
         values.put(ProductContract.COL_PRICE, product.getPrice());
-        values.put(ProductContract.COL_CODE,product.getCode());
         db.update(ProductContract.TABLE_NAME, values, ProductContract.COL_ID + " = ?", new String[]{String.valueOf(product.getId())});
     }
 
@@ -84,10 +85,10 @@ public class ProductDaoSQLite {
             do {
                 Product product = new Product(
                         cursor.getInt(cursor.getColumnIndexOrThrow(ProductContract.COL_ID)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(ProductContract.COL_CODE)),
                         cursor.getString(cursor.getColumnIndexOrThrow(ProductContract.COL_NAME)),
                         cursor.getInt(cursor.getColumnIndexOrThrow(ProductContract.COL_QUANTITY)),
-                        cursor.getDouble(cursor.getColumnIndexOrThrow(ProductContract.COL_PRICE)),
-                        cursor.getString(cursor.getColumnIndexOrThrow(ProductContract.COL_CODE))
+                        cursor.getDouble(cursor.getColumnIndexOrThrow(ProductContract.COL_PRICE))
                 );
                 products.add(product);
             } while (cursor.moveToNext());

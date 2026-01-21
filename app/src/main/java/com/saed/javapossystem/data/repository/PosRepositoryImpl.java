@@ -2,8 +2,13 @@ package com.saed.javapossystem.data.repository;
 
 import android.content.Context;
 
+import com.saed.javapossystem.domain.entities.Bill;
+import com.saed.javapossystem.domain.entities.BillRow;
 import com.saed.javapossystem.domain.entities.Product;
 import com.saed.javapossystem.domain.repository.PosRepository;
+import com.saed.javapossystem.framework.db.BillDaoSQLite;
+import com.saed.javapossystem.framework.db.BillRowDaoSQLite;
+import com.saed.javapossystem.framework.db.ProductDaoSQLite;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +18,8 @@ public class PosRepositoryImpl implements PosRepository {
     // 1. THE LIST: This is the primary data source for your modern view
     private final List<Product> cartList = new ArrayList<>();
 
-    public PosRepositoryImpl(Context context) {
+
+    public PosRepositoryImpl() {
     }
 
 
@@ -22,7 +28,7 @@ public class PosRepositoryImpl implements PosRepository {
         if (cartList.contains(product)) {
             int index = cartList.indexOf(product);
             Product existingProduct = cartList.get(index);
-            existingProduct.setQty(existingProduct.getQty() + 1);
+            existingProduct.setQty(existingProduct.getSelldQuantity() + 1);
             cartList.set(index, existingProduct);
         } else {
             cartList.add(product);
@@ -62,7 +68,7 @@ public class PosRepositoryImpl implements PosRepository {
     public int getTotalQty() {
         int total = 0;
         for (Product p : cartList) {
-            total += p.getQty();
+            total += Math.abs(p.getSelldQuantity());
         }
         return total;
     }
@@ -77,4 +83,5 @@ public class PosRepositoryImpl implements PosRepository {
         cartList.set(index, existingProduct);
         return true;
     }
+
 }

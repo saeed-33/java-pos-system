@@ -9,7 +9,7 @@ public class BillRowContract {
     public static final String COL_QUANTITY = "quantity";
     public static final String COL_PRICE = "price";
     public static final String CREATE_TABLE =
-            "CREATE TABLE " + TABLE_NAME + " (" +
+            "CREATE TABLE IF NOT EXISTS " + TABLE_NAME + " (" +
                     COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COL_PRODUCT_ID + " INTEGER NOT NULL, " +
                     COL_QUANTITY + " INTEGER NOT NULL, " +
