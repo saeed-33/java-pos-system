@@ -9,7 +9,7 @@ public class BillContract {
             "CREATE TABLE " + TABLE_NAME + " (" +
                     COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     COL_TOTAL_PRICE + "NUMBER," +
-                    COL_DATE + "DATE DEFAULT DATE('now')" +
+                    COL_DATE + "TEXT DEFAULT (datetime('now'))" +
                     ")";
     public static final String DROP_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
 }
