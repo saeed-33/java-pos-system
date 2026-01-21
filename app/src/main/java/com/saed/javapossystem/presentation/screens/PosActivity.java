@@ -1,6 +1,7 @@
 package com.saed.javapossystem.presentation.screens;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -38,7 +39,7 @@ public class PosActivity extends AppCompatActivity {
     EditText barcode;
     AppContainer container;
     private Product selectedProduct = null;
-    ImageButton btnClear ;
+    ImageButton btnClear;
 
     //usecases
     private AddProductToCartUseCase addProductToCartUseCase;
@@ -54,16 +55,22 @@ public class PosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pos);
         container = ((PosApplication) getApplication()).appContainer;
-        initBarcode();
         initListView();
+        initBarcode();
         initProductList();
         initUseCases();
 
     }
 
-    private void initBarcode(){
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (productAdapter != null) productAdapter.updateData(getAllCartItemsUseCase.execute());
+    }
+
+    private void initBarcode() {
         barcode = findViewById(R.id.barcodeInput);
-        btnClear= findViewById(R.id.btnClear);
+        btnClear = findViewById(R.id.btnClear);
         btnClear.setOnClickListener(v -> {
             barcode.setText("");
             barcode.requestFocus();
@@ -74,6 +81,7 @@ public class PosActivity extends AppCompatActivity {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.length() > 0) {
@@ -84,7 +92,8 @@ public class PosActivity extends AppCompatActivity {
             }
 
             @Override
-            public void afterTextChanged(Editable s) {}
+            public void afterTextChanged(Editable s) {
+            }
         });
     }
 
@@ -125,8 +134,8 @@ public class PosActivity extends AppCompatActivity {
 
     private ButtonModel initPayButton() {
         ButtonModel.OnButtonClickListener onPress = () -> {
-        payBillUseCase.execute();
-        productAdapter.updateData(getAllCartItemsUseCase.execute());
+            payBillUseCase.execute();
+            productAdapter.updateData(getAllCartItemsUseCase.execute());
         };
         return new ButtonModel(getString(R.string.pay_button), onPress);
     }
@@ -175,9 +184,9 @@ public class PosActivity extends AppCompatActivity {
 
     private ButtonModel initSearchButton() {
         ButtonModel.OnButtonClickListener onPress = () -> {
-
+            Intent intent = new Intent(this, SearchActivity.class);
+            startActivity(intent);
         };
-        return new ButtonModel(getString(R.string.search_button), () -> {
-        });
+        return new ButtonModel(getString(R.string.search_button), onPress);
     }
 }
