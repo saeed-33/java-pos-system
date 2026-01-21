@@ -6,6 +6,7 @@ public class Product {
     final private int id;
     private String name;
     private int quantity;
+    private int selldQuantity;
     private double price;
     private String code;
 
@@ -14,6 +15,17 @@ public class Product {
         this.code = barcode;
         this.name = name;
         this.quantity = qty;
+        this.selldQuantity = 0;
+        this.price = price;
+
+    }
+
+    public Product(int id, String barcode, String name, int qty, double price, int selldQuantity) {
+        this.id = id;
+        this.code = barcode;
+        this.name = name;
+        this.quantity = qty;
+        this.selldQuantity = selldQuantity;
         this.price = price;
 
     }
@@ -24,7 +36,11 @@ public class Product {
     }
 
     public int getQty() {
-        return quantity;
+        return quantity - selldQuantity;
+    }
+
+    public int getSelldQuantity() {
+        return selldQuantity;
     }
 
     public String getName() {
@@ -41,11 +57,12 @@ public class Product {
 
 
     public double getTotalPrice() {
-        return quantity * price;
+        return selldQuantity * price;
     }
 
     public void setQty(int i) {
-        quantity = i;
+
+        selldQuantity = i;
     }
 
     @Override
@@ -66,7 +83,9 @@ public class Product {
         return barcodeCond && idCond && nameCond;
     }
 
-    public Product copyWith(int quantity) {
-        return new Product(id, code, name, quantity, price);
+    public Product copyWith(int selldQuantity) {
+        return new Product(id, code, name, quantity, price, selldQuantity);
     }
+
+
 }

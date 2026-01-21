@@ -4,12 +4,16 @@ import android.content.Context;
 
 import com.saed.javapossystem.domain.entities.Product;
 import com.saed.javapossystem.domain.repository.ProductRepository;
+import com.saed.javapossystem.framework.db.ProductDaoSQLite;
 
 import java.util.Collections;
 import java.util.List;
 
 public class ProductRepositoryImpl implements ProductRepository {
-    public ProductRepositoryImpl(Context context) {
+    final private ProductDaoSQLite productDaoSQLite;
+
+    public ProductRepositoryImpl(Context context, ProductDaoSQLite productDaoSQLite) {
+        this.productDaoSQLite = productDaoSQLite;
     }
 
     @Override
@@ -24,12 +28,12 @@ public class ProductRepositoryImpl implements ProductRepository {
 
     @Override
     public Product getProduct(String code) {
-        return new Product(2, "444", "ddd", 1, 500);
+        return productDaoSQLite.getProduct(code);
     }
 
     @Override
     public void updateProduct(Product product) {
-
+        productDaoSQLite.updateProduct(product);
     }
 
     @Override

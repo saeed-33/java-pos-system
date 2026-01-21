@@ -72,9 +72,9 @@ public class PosListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             ItemViewHolder h = (ItemViewHolder) holder;
 
             h.name.setText(product.getName());
-            h.qty.setText(String.valueOf(product.getQty()));
+            h.qty.setText(String.valueOf(product.getSelldQuantity()));
             h.price.setText(String.format("%.2f", product.getPrice()));
-            h.total.setText(String.format("%.2f", product.getQty() * product.getPrice()));
+            h.total.setText(String.format("%.2f", product.getTotalPrice()));
 
             // --- SELECTION LOGIC ---
             if (listIndex == selectedPosition) {
