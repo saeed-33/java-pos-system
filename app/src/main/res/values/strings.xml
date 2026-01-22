@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">JavaPosSystem</string>
+    <string name="app_name">Mobile Pos</string>
     <string name="logo">logo</string>
     <string name="pos_screen">POS</string>
     <string name="product_screen">products</string>
@@ -9,6 +9,18 @@
     <string name="change_qty_button">change qty</string>>
     <string name="enter_button">Enter</string>>
     <string name="pay_button">Pay</string>>
-    <string name="search_button">Search</string>>
-
+    <string name="search_button">Search</string>
+    <string name="name">NAME</string>
+    <string name="barcode">BARCODE</string>
+    <string name="price">PRICE</string>
+    <string name="qty">QTY</string>
+    <string name="pos_total_qty">Total QTY: %1$d</string>
+    <string name="pos_total_price">Total Price: $%1$.2f</string>
+    <string name="select_row_color">#E3F2FD</string>
+    <string name="error">Error : %s</string>
+    <string name="product_not_found">Product not found</string>
+    <string name="error_while_pay_the_bill">error while pay the bill</string>
+    <string name="search_name_or_barcode">Search name or barcode...</string>
+    <string name="barcode_hint">0</string>
+    <string name="total">TOTAL</string>
 </resources>

@@ -5,5 +5,15 @@
     <color name="nav_button_color">#F6F6F6</color>
     <color name="nav_button_icon_color">#2196F3</color>
     <color name="nav_button_text_color">#FF000000</color>
-
+    <color name="stroke_color">#D1D1D1</color>
+    <color name="ic_color">#e3e3e3</color>
+    <color name="screen_background">#F8F9FA</color>
+    <color name="barcode_text_color">#333333</color>
+    <color name="ic_bar_color">#9E9E9E</color>
+    <color name="ripple_color">#F5F5F5</color>
+    <color name="header_row_color">#757575</color>
+    <color name="light_stroke">#E0E0E0</color>
+    <color name="mid_stroke">#EEEEEE</color>
+    <string name="app_bar_color">#F1F1F1</string>
+    <string name="row_color">#FFFFFFFF</string>
 </resources>

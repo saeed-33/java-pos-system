@@ -1,5 +1,8 @@
 package com.saed.javapossystem.domain.usecase;
 
+import android.content.Context;
+
+import com.saed.javapossystem.R;
 import com.saed.javapossystem.domain.entities.Bill;
 import com.saed.javapossystem.domain.entities.BillRow;
 import com.saed.javapossystem.domain.entities.Product;
@@ -21,7 +24,7 @@ public class PayBillUseCase {
         this.billRowRepository = billRowRepository;
     }
 
-    public void execute() {
+    public void execute(Context context) {
         try {
             Bill bill = new Bill(posRepository.getTotalPrice());
             int billId = billRepository.createBill(bill);
@@ -32,7 +35,7 @@ public class PayBillUseCase {
             }
             posRepository.clearCart();
         } catch (Exception e) {
-            throw new RuntimeException("error while pay the bill");
+            throw new RuntimeException(context.getString(R.string.error_while_pay_the_bill));
         }
 
     }

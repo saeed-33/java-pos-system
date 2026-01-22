@@ -10,7 +10,7 @@
         <!-- Icon -->
         <item name="iconTint">@color/nav_button_icon_color</item>
         <item name="iconTintMode">src_in</item>
-        <item name="iconGravity">textTop</item>
+        <item name="iconGravity">top</item>
         <item name="iconPadding">24dp</item>
         <item name="iconSize">56dp</item>
 

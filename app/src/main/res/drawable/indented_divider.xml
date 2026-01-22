@@ -4,6 +4,6 @@
     android:insetRight="16dp">
     <shape android:shape="rectangle">
         <size android:height="1px" />
-        <solid android:color="#D1D1D1" />
+        <solid android:color="@color/stroke_color" />
     </shape>
 </inset>

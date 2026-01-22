@@ -1,5 +1,6 @@
 package com.saed.javapossystem.presentation.resources;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,13 +30,15 @@ public class PosButtonAdapter extends RecyclerView.Adapter<PosButtonAdapter.Butt
 
     @Override
     public void onBindViewHolder(ButtonViewHolder holder, int position) {
+        Context context = holder.itemView.getContext();
+
         ButtonModel model = buttons.get(position);
         holder.button.setText(model.getText());
         holder.button.setOnClickListener(v -> {
             try {
                 model.getOnPress().onButtonClick();
             } catch (Exception e) {
-                Toast.makeText(v.getContext(), "Error :" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(v.getContext(), context.getString(R.string.error,e.getMessage()) , Toast.LENGTH_SHORT).show();
             }
         });
     }

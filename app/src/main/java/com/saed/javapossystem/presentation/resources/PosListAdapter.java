@@ -1,5 +1,5 @@
 package com.saed.javapossystem.presentation.resources;
-
+import android.content.Context;
 import android.graphics.Color; // Added
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,10 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.saed.javapossystem.PosApplication;
 import com.saed.javapossystem.R;
-import com.saed.javapossystem.di.AppContainer;
 import com.saed.javapossystem.domain.entities.Product;
 import com.saed.javapossystem.domain.usecase.GetCartTotalPriceUseCase;
 import com.saed.javapossystem.domain.usecase.GetCartTotalQtyUseCase;
@@ -23,8 +20,8 @@ public class PosListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     private static final int TYPE_FOOTER = 2;
 
     private List<Product> productList;
-   final private GetCartTotalQtyUseCase getCartTotalQtyUseCase;
-   final private GetCartTotalPriceUseCase getCartTotalPriceUseCase;
+    final private GetCartTotalQtyUseCase getCartTotalQtyUseCase;
+    final private GetCartTotalPriceUseCase getCartTotalPriceUseCase;
 
     // Selection state
     private int selectedPosition = RecyclerView.NO_POSITION;
@@ -66,7 +63,10 @@ public class PosListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        Context context = holder.itemView.getContext();
+
         if (holder instanceof ItemViewHolder) {
+
             int listIndex = position - 1; // Map adapter position to list index
             Product product = productList.get(listIndex);
             ItemViewHolder h = (ItemViewHolder) holder;
@@ -79,10 +79,10 @@ public class PosListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             // --- SELECTION LOGIC ---
             if (listIndex == selectedPosition) {
                 // Modern light highlight (Light Blue)
-                h.itemView.setBackgroundColor(Color.parseColor("#E3F2FD"));
+                h.itemView.setBackgroundColor(Color.parseColor(context.getString(R.string.select_row_color)));
             } else {
                 // Standard background (White)
-                h.itemView.setBackgroundColor(Color.WHITE);
+                h.itemView.setBackgroundColor(Color.parseColor(context.getString(R.string.row_color)));
             }
 
             h.itemView.setOnClickListener(v -> {
@@ -102,11 +102,10 @@ public class PosListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         } else if (holder instanceof FooterViewHolder) {
             FooterViewHolder f = (FooterViewHolder) holder;
 
-            double totalP =getCartTotalPriceUseCase.execute();
+            double totalP = getCartTotalPriceUseCase.execute();
             int totalQ = getCartTotalQtyUseCase.execute();
-
-            f.txtQty.setText("Total QTY : " + totalQ);
-            f.txtPrice.setText("Total Price : " + String.format("%.2f", totalP));
+            f.txtQty.setText(context.getString(R.string.pos_total_qty, totalQ));
+            f.txtPrice.setText(context.getString(R.string.pos_total_price, totalP));
         }
     }
 

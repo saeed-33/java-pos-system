@@ -2,14 +2,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#F8F9FA">
+    android:background="@color/screen_background"
+    android:orientation="vertical">
 
     <!-- 1. MODERN HEADER BAR -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="#FFFFFF"
+        android:background="@color/white"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:paddingHorizontal="8dp">
@@ -19,22 +19,25 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@android:drawable/ic_menu_revert"
             android:rotation="180"
-            app:tint="#333333" />
+            android:src="@android:drawable/ic_menu_revert"
+            app:tint="@color/barcode_text_color" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:text="Search Products"
+            android:textColor="@color/barcode_text_color"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="#333333"
-            android:layout_marginStart="8dp"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
     <!-- 1px Divider under Header -->
-    <View android:layout_width="match_parent" android:layout_height="1px" android:background="#D1D1D1" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/stroke_color" />
 
     <!-- 2. SEARCH BAR -->
     <EditText
@@ -43,16 +46,22 @@
         android:layout_height="50dp"
         android:layout_margin="12dp"
         android:background="@drawable/search_bar_bg"
-        android:hint="Search name or barcode..."
-        android:paddingHorizontal="16dp"
         android:drawableStart="@android:drawable/ic_menu_search"
         android:drawablePadding="10dp"
-        android:textSize="15sp"
-        android:singleLine="true" />
+        android:hint="@string/search_name_or_barcode"
+        android:paddingHorizontal="16dp"
+        android:singleLine="true"
+        android:textSize="15sp" />
 
     <!-- Table Header and RecyclerView below... -->
-    <include layout="@layout/item_search_product" android:id="@+id/headerLayout" />
-    <View android:layout_width="match_parent" android:layout_height="1px" android:background="#D1D1D1" />
+    <include
+        android:id="@+id/headerLayout"
+        layout="@layout/item_search_product" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/stroke_color" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/searchRecyclerView"

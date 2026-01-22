@@ -2,6 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <application
         android:name=".PosApplication"
         android:allowBackup="true"
@@ -12,29 +18,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JavaPosSystem">
+
+        <!-- 1. SEARCH SCREEN: Internal only -->
         <activity
             android:name=".presentation.screens.SearchActivity"
-            android:exported="false" />
+            android:configChanges="orientation"
+            android:exported="false"
+            android:screenOrientation="userPortrait"
+            android:windowSoftInputMode="stateVisible" />
+
+        <!-- 2. POS SCREEN: This should be your ONLY Launcher -->
         <activity
             android:name=".presentation.screens.PosActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.JavaPosSystem">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:configChanges="orientation"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="userPortrait" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <!-- 2. MAIN ACTIVITY: Now this is the "Start" screen -->
         <activity
             android:name=".presentation.screens.MainActivity"
-            android:exported="true">
+            android:configChanges="orientation"
+            android:exported="true"
+            android:screenOrientation="userPortrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>
