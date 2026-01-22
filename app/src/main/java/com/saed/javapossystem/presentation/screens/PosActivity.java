@@ -56,6 +56,8 @@ import com.saed.javapossystem.presentation.resources.ButtonModel;
 import com.saed.javapossystem.presentation.resources.PosButtonAdapter;
 import com.saed.javapossystem.presentation.resources.PosListAdapter;
 
+import java.security.Timestamp;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -71,6 +73,8 @@ public class PosActivity extends AppCompatActivity {
     private Camera cameraVal;
     boolean isFlashOn = false;
     private boolean isCameraExpanded = false;
+    private long lastScanTime = 0;
+    private String lastScannedBarcode = "";
 
 
     //usecases
@@ -321,9 +325,12 @@ public class PosActivity extends AppCompatActivity {
 
                                 if (rawValue != null && !rawValue.isEmpty()) {
                                     try {
+                                        if (System.currentTimeMillis() - lastScanTime < 1000 && lastScannedBarcode.equals(rawValue)) {
+                                            return;
+                                        } else {
+                                            addProductToCartUseCase.execute(rawValue, this);// Your POS logic
 
-                                        addProductToCartUseCase.execute(rawValue, this);// Your POS logic
-
+                                        }
                                     } catch (Exception e) {
                                         Toast.makeText(this, getString(R.string.product_not_found), Toast.LENGTH_SHORT).show();
                                     }
@@ -336,6 +343,9 @@ public class PosActivity extends AppCompatActivity {
                     .addOnCompleteListener(task -> {
                         if (!task.getResult().isEmpty()) {
                             System.out.println("image captured" + task.getResult());
+                            lastScanTime = System.currentTimeMillis();
+                            lastScannedBarcode = task.getResult().toString();
+                            productAdapter.updateData(getAllCartItemsUseCase.execute());
                         }
                         imageProxy.close();
 
