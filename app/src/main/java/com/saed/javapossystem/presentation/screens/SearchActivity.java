@@ -28,6 +28,7 @@ import com.saed.javapossystem.domain.usecase.GetAllProductsUseCase;
 import com.saed.javapossystem.presentation.resources.SearchProductListAdapter;
 
 import java.util.List;
+import java.util.Objects;
 
 public class SearchActivity extends AppCompatActivity {
     private GetAllProductsUseCase getAllProductsUseCase;
@@ -56,23 +57,23 @@ public class SearchActivity extends AppCompatActivity {
 
     private void initList() {
         View header = findViewById(R.id.headerLayout);
-        header.setBackgroundColor(Color.parseColor("#F1F1F1"));
-        ((TextView) header.findViewById(R.id.txtName)).setText("NAME");
-        ((TextView) header.findViewById(R.id.txtBarcode)).setText("BARCODE");
-        ((TextView) header.findViewById(R.id.txtPrice)).setText("PRICE");
-        ((TextView) header.findViewById(R.id.txtQty)).setText("QTY");
+        header.setBackgroundColor(Color.parseColor(getString(R.string.app_bar_color)));
+        ((TextView) header.findViewById(R.id.txtName)).setText(R.string.name);
+        ((TextView) header.findViewById(R.id.txtBarcode)).setText(R.string.barcode);
+        ((TextView) header.findViewById(R.id.txtPrice)).setText(R.string.price);
+        ((TextView) header.findViewById(R.id.txtQty)).setText(R.string.qty);
 
         RecyclerView rv = findViewById(R.id.searchRecyclerView);
         rv.setLayoutManager(new LinearLayoutManager(this));
 
         DividerItemDecoration decoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
-        decoration.setDrawable(ContextCompat.getDrawable(this, R.drawable.indented_divider));
+        decoration.setDrawable(Objects.requireNonNull(ContextCompat.getDrawable(this, R.drawable.indented_divider)));
         rv.addItemDecoration(decoration);
         List<Product> products = getAllProductsUseCase.execute(); // Your data source
         adapter = new SearchProductListAdapter(products);
         rv.setAdapter(adapter);
         adapter.setOnProductClickListener(product -> {
-            addProductToCartUseCase.execute(product.getBarcode());
+            addProductToCartUseCase.execute(product.getBarcode(),this);
             finish();
         });
 

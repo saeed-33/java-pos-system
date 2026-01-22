@@ -1,5 +1,8 @@
 package com.saed.javapossystem.domain.usecase;
 
+import android.content.Context;
+import com.saed.javapossystem.R;
+
 import com.saed.javapossystem.domain.repository.PosRepository;
 
 public class ChangeQtyOfProductUseCase {
@@ -9,10 +12,10 @@ public class ChangeQtyOfProductUseCase {
         this.repository = repository;
     }
 
-    public void execute(int id, int newQty) {
+    public void execute(int id, int newQty, Context context) {
         boolean success = repository.changeQtyOfProduct(id, newQty);
         if (!success) {
-            throw new RuntimeException("Product not found");
+            throw new RuntimeException(context.getString(R.string.product_not_found));
         }
     }
 }
