@@ -10,9 +10,9 @@
     <string name="enter_button">Enter</string>>
     <string name="pay_button">Pay</string>>
     <string name="search_button">Search</string>
-    <string name="name">NAME</string>
-    <string name="barcode">BARCODE</string>
-    <string name="price">PRICE</string>
+    <string name="nameTxt">NAME</string>
+    <string name="barcodeTxt">BARCODE</string>
+    <string name="priceTxt">PRICE</string>
     <string name="qty">QTY</string>
     <string name="pos_total_qty">Total QTY: %1$d</string>
     <string name="pos_total_price">Total Price: $%1$.2f</string>

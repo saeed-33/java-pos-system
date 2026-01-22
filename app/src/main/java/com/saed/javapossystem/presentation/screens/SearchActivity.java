@@ -58,9 +58,9 @@ public class SearchActivity extends AppCompatActivity {
     private void initList() {
         View header = findViewById(R.id.headerLayout);
         header.setBackgroundColor(Color.parseColor(getString(R.string.app_bar_color)));
-        ((TextView) header.findViewById(R.id.txtName)).setText(R.string.name);
-        ((TextView) header.findViewById(R.id.txtBarcode)).setText(R.string.barcode);
-        ((TextView) header.findViewById(R.id.txtPrice)).setText(R.string.price);
+        ((TextView) header.findViewById(R.id.txtName)).setText(R.string.nameTxt);
+        ((TextView) header.findViewById(R.id.txtBarcode)).setText(R.string.barcodeTxt);
+        ((TextView) header.findViewById(R.id.txtPrice)).setText(R.string.priceTxt);
         ((TextView) header.findViewById(R.id.txtQty)).setText(R.string.qty);
 
         RecyclerView rv = findViewById(R.id.searchRecyclerView);
