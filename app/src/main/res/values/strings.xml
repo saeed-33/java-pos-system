@@ -23,4 +23,22 @@
     <string name="search_name_or_barcode">Search name or barcode...</string>
     <string name="barcode_hint">0</string>
     <string name="total">TOTAL</string>
+    <string name="title_activity_product">ProductActivity</string>
+    <string name="title_activity_product_activity.java">ProductActivity.java</string>
+    <string name="add_product">Add Product</string>
+    <string name="edit_product">Edit Product</string>
+    <string name="id">id :</string>
+    <string name="name">name :</string>
+    <string name="quantity">quantity :</string>
+    <string name="price">price :</string>
+    <string name="barcode">barcode :</string>
+    <string name="barcode_all_caps">BARCODE</string>
+    <string name="item_barcode">item Barcode</string>
+    <string name="_0_00">0.00</string>
+    <string name="_1">1</string>
+    <string name="item_name">Item Name</string>
+    <string name="bill_report">Bill Report</string>
+    <string name="products_list">Products list</string>
+    <string name="product">Product</string>>
+
 </resources>

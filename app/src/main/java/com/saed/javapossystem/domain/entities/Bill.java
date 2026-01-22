@@ -9,9 +9,14 @@ import java.util.Locale;
 public class Bill {
 
     private int id;
-    private Date date;
+    private String date;
     private double totalPrice;
 
+    public Bill(double totalPrice,String date) {
+        this.totalPrice = totalPrice;
+        this.date=date;
+
+    }
     public Bill(double totalPrice){
         this.totalPrice = totalPrice;
         this.date=null;
@@ -20,12 +25,7 @@ public class Bill {
 
     public Bill(int id, String date, double totalPrice) {
         this.id = id;
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-        try{
-            this.date = sdf.parse(date);
-        }catch (ParseException e){
-            this.date = new Date();
-        }
+        this.date = date;
         this.totalPrice = totalPrice;
     }
 
@@ -33,7 +33,7 @@ public class Bill {
         return id;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 

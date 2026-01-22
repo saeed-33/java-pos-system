@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity {
         reportButton = findViewById(R.id.report_nav_button);
 
        posButton.setNavigateTo(PosActivity.class);
+       productButton.setNavigateTo(ProductListActivity.class);
+       reportButton.setNavigateTo(ReportActivity.class);
 
     }
 }

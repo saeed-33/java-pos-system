@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.saed.javapossystem.domain.entities.Bill;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +21,7 @@ public class BillDaoSQLite {
         ContentValues values = new ContentValues();
         values.put(BillContract.COL_TOTAL_PRICE, bill.getTotalPrice());
         long id = db.insert(BillContract.TABLE_NAME, null, values);
+
         return (int) id;
     }
 

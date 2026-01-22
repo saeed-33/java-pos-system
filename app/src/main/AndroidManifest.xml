@@ -36,6 +36,31 @@
             android:screenOrientation="userPortrait" />
 
         <!-- 2. MAIN ACTIVITY: Now this is the "Start" screen -->
+            android:exported="true"
+            android:theme="@style/Theme.JavaPosSystem">
+
+        </activity>
+
+        <activity
+            android:name=".presentation.screens.ProductListActivity"
+            android:exported="true"
+            android:theme="@style/Theme.JavaPosSystem">
+
+        </activity>
+        <activity
+            android:name=".presentation.screens.ReportActivity"
+            android:exported="true"
+            android:theme="@style/Theme.JavaPosSystem">
+
+        </activity>
+        <activity
+            android:name=".presentation.screens.ProductActivity"
+            android:exported="true"
+            android:theme="@style/Theme.JavaPosSystem">
+
+        </activity>
+
+
         <activity
             android:name=".presentation.screens.MainActivity"
             android:configChanges="orientation"
