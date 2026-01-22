@@ -4,6 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="nav_button_color">#F6F6F6</color>
     <color name="nav_button_icon_color">#2196F3</color>
+    <color name="navigator_color">#0A7EDB</color>
     <color name="nav_button_text_color">#FF000000</color>
 
 </resources>

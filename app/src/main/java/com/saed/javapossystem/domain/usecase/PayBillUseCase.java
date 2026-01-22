@@ -24,7 +24,12 @@ public class PayBillUseCase {
     public void execute() {
         try {
             Bill bill = new Bill(posRepository.getTotalPrice());
+            System.out.println("===================================");
+
             int billId = billRepository.createBill(bill);
+            System.out.println("===================================");
+
+            System.out.println(billId);
             for (Product p : posRepository.getAllProducts()) {
                 BillRow row = new BillRow(billId, p.getId(), p.getSelldQuantity(), p.getPrice());
                 billRowRepository.createBillRow(row);

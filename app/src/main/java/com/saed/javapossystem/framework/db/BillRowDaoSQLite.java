@@ -20,16 +20,25 @@ public class BillRowDaoSQLite {
         values.put(BillRowContract.COL_PRODUCT_ID, billRow.getProduct_id());
         values.put(BillRowContract.COL_QUANTITY, billRow.getQuantity());
         values.put(BillRowContract.COL_PRICE, billRow.getPrice());
-        db.insert(BillRowContract.TABLE_NAME, null, values );
+        long res = db.insert(BillRowContract.TABLE_NAME, null, values );
+
     }
 
     public List<BillRow> getAllBillRows(int billId) {
+        System.out.println("[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[");
+        System.out.println(billId);
+        System.out.println("[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[");
+
         List<BillRow> billRows = new ArrayList<>();
         String selection = BillRowContract.COL_BILL_ID + " = ?";
         String[] selectionArgs = { String.valueOf(billId) };
+
         Cursor cursor = db.query(BillRowContract.TABLE_NAME, null, selection, selectionArgs, null, null, null);
+        System.out.println(cursor.moveToFirst());
         if (cursor.moveToFirst()) {
+            int i =0;
             do {
+                System.out.println(i++);
                 BillRow billRow = new BillRow(
                         cursor.getInt(cursor.getColumnIndexOrThrow(BillRowContract.COL_ID)),
                         cursor.getInt(cursor.getColumnIndexOrThrow(BillRowContract.COL_BILL_ID)),
